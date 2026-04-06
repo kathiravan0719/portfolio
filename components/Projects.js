@@ -19,8 +19,8 @@ const projects = [
     title: 'E-Bus System',
     description:
       'A comprehensive digital bus ticketing and real-time location management system. Developed during my internship to streamline public transport tracking and booking experiences.',
-    tech: ['React', 'Node.js', 'MongoDB', 'Express', 'JWT'],
-    liveUrl: '#',
+    tech: ['Frontend: HTML, CSS, JavaScript', 'Backend/Database: Firebase (Firestore + Authentication)'],
+    liveUrl: 'https://loginform-93e3d.web.app/',
     githubUrl: 'https://github.com/kathiravan0719/Ebus-Location-Management',
     accent: '#10B981',
   },
