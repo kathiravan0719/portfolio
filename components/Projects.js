@@ -1,25 +1,54 @@
 'use client'
-import { motion, AnimatePresence } from 'framer-motion'
-import { useState, useRef } from 'react'
+import { motion, AnimatePresence, useMotionValue, useTransform } from 'framer-motion'
+import { useState, useEffect } from 'react'
+import { 
+  SiNodedotjs, SiExpress, SiMongodb, 
+  SiTailwindcss, SiFirebase, SiFlask, SiPython, 
+  SiJavascript, SiVercel, 
+  SiRender, SiJsonwebtokens 
+} from 'react-icons/si'
+import { FaReact, FaHtml5, FaCss3Alt, FaNodeJs } from 'react-icons/fa'
+import { FiGithub, FiExternalLink, FiChevronLeft, FiChevronRight } from 'react-icons/fi'
 
+const techIcons = {
+  'React': { icon: FaReact, color: '#61DAFB' },
+  'Node.js': { icon: FaNodeJs, color: '#339933' },
+  'Express': { icon: SiExpress, color: '#FFFFFF' },
+  'MongoDB': { icon: SiMongodb, color: '#47A248' },
+  'Flask': { icon: SiFlask, color: '#FFFFFF' },
+  'Python': { icon: SiPython, color: '#3776AB' },
+  'Tailwind CSS': { icon: SiTailwindcss, color: '#06B6D4' },
+  'Firebase': { icon: SiFirebase, color: '#FFCA28' },
+  'Firestore': { icon: SiFirebase, color: '#FFCA28' },
+  'Authentication': { icon: SiFirebase, color: '#FFCA28' },
+  'JavaScript': { icon: SiJavascript, color: '#F7DF1E' },
+  'HTML': { icon: FaHtml5, color: '#E34F26' },
+  'CSS': { icon: FaCss3Alt, color: '#1572B6' },
+  'Vercel': { icon: SiVercel, color: '#FFFFFF' },
+  'Render': { icon: SiRender, color: '#FFFFFF' },
+  'JWT': { icon: SiJsonwebtokens, color: '#D63AFF' },
+  'Next.js': { icon: FaReact, color: '#FFFFFF' },
+}
 
 const projects = [
   {
     tag: 'Featured Project',
     title: 'StudyAI — Smart Planner',
     description:
-      'An intelligent study planner powered by AI that helps students organize their academic life. Features smart scheduling, streak tracking to maintain consistency, and a built-in analytics dashboard to visualize progress.',
-    tech: ['Flask', 'MongoDB', 'Python', 'React', 'Tailwind CSS', 'Render'],
+      'An intelligent study planner powered by AI that helps students organize their academic life. Features smart scheduling, streak tracking, and a built-in analytics dashboard.',
+    image: '/projects/studyai.png',
+    tech: ['Python', 'Flask', 'MongoDB', 'React', 'Tailwind CSS', 'Render'],
     liveUrl: 'https://ai-study-planner-8y16.onrender.com',
     githubUrl: 'https://github.com/kathiravan0719/study-planner',
     accent: '#22D3EE',
   },
   {
     tag: 'Internship Project',
-    title: 'E-Bus System',
+    title: 'E-Bus Tracking System',
     description:
-      'A comprehensive digital bus ticketing and real-time location management system. Developed during my internship to streamline public transport tracking and booking experiences.',
-    tech: ['Frontend: HTML, CSS, JavaScript', 'Backend/Database: Firebase (Firestore + Authentication)'],
+      'A digital bus ticketing and real-time location management system. Developed to streamline public transport tracking and booking experiences with Firebase integration.',
+    image: '/projects/ebus.png',
+    tech: ['HTML', 'CSS', 'JavaScript', 'Firebase'],
     liveUrl: 'https://loginform-93e3d.web.app/',
     githubUrl: 'https://github.com/kathiravan0719/Ebus-Location-Management',
     accent: '#10B981',
@@ -29,12 +58,132 @@ const projects = [
     title: 'ShopMERN — E-Commerce',
     description:
       'A professional full-stack platform featuring JWT auth, role-based admin dashboard, real-time cart, multi-step checkout, and a RESTful API with 15+ endpoints.',
+    image: '/projects/shopmern.png',
     tech: ['React', 'Node.js', 'Express', 'MongoDB', 'JWT', 'Vercel'],
     liveUrl: 'https://shopmern-woad.vercel.app/',
     githubUrl: 'https://github.com/kathiravan0719/shopmern',
     accent: '#A78BFA',
   },
 ]
+
+const TechIcon = ({ name }) => {
+  const tech = techIcons[name] || { icon: SiJavascript, color: '#F7DF1E' }
+  const Icon = tech.icon
+  return (
+    <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 transition-colors hover:bg-white/10 group">
+      <Icon style={{ color: tech.color }} className="text-sm transition-transform group-hover:scale-110" />
+      <span className="text-[10px] font-medium text-[var(--text-secondary)] whitespace-nowrap">{name}</span>
+    </div>
+  )
+}
+
+const ProjectCard = ({ project, isFront, position, onNext }) => {
+  const x = useMotionValue(0)
+  const rotate = useTransform(x, [-150, 0, 150], [-15, 0, 15])
+  const opacity = useTransform(x, [-150, -100, 0, 100, 150], [0, 1, 1, 1, 0])
+
+  // Reset x position when card moves to back
+  useEffect(() => {
+    if (!isFront) {
+      x.set(0)
+    }
+  }, [isFront, x])
+
+  const handleDragEnd = (_, info) => {
+    if (Math.abs(info.offset.x) > 100) {
+      onNext()
+    }
+  }
+
+  return (
+    <motion.div
+      style={{
+        x,
+        rotate,
+        opacity: isFront ? 1 : 1 - position * 0.3,
+        scale: 1 - position * 0.08,
+        z: -position * 100,
+        y: position * 15,
+        zIndex: 10 - position,
+        pointerEvents: isFront ? 'auto' : 'none',
+      }}
+      initial={{ opacity: 0, scale: 0.8, y: 50 }}
+      animate={{ opacity: 1, scale: 1 - position * 0.08, y: position * 15 }}
+      exit={{ x: 500, opacity: 0, rotate: 20, transition: { duration: 0.4 } }}
+      drag={isFront ? 'x' : false}
+      dragConstraints={{ left: 0, right: 0 }}
+      onDragEnd={handleDragEnd}
+      className="absolute w-full max-w-[850px] aspect-[16/10] md:aspect-[16/9] cursor-grab active:cursor-grabbing"
+    >
+      <div className="w-full h-full glass rounded-[3rem] overflow-hidden border border-white/10 shadow-3xl flex flex-col md:flex-row p-6 md:p-8 gap-8 group transition-all duration-500 hover:border-white/20 backdrop-blur-3xl bg-white/[0.03]">
+        
+        {/* Left: Project Preview */}
+        <div className="relative w-full md:w-[45%] h-full rounded-[2rem] overflow-hidden flex-shrink-0 bg-black/40 border border-white/5">
+          <img 
+            src={project.image} 
+            alt={project.title}
+            className={`w-full h-full object-cover transition-all duration-700 ${isFront ? 'scale-100 opacity-100 group-hover:scale-105' : 'scale-95 opacity-40'}`}
+            onError={(e) => { e.target.src = 'https://images.unsplash.com/photo-1517694712202-14dd9538aa97?q=80&w=2070&auto=format&fit=crop' }}
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
+          
+          {/* Action Icons Override - Only on Front */}
+          <motion.div 
+            animate={{ opacity: isFront ? 1 : 0, y: isFront ? 0 : 20 }}
+            className="absolute top-6 right-6 flex gap-3"
+          >
+             <a href={project.githubUrl} target="_blank" rel="noreferrer" className="w-11 h-11 flex items-center justify-center rounded-2xl glass border border-white/10 text-white hover:bg-indigo-500 transition-all hover:scale-110 shadow-xl">
+               <FiGithub size={20} />
+             </a>
+             <a href={project.liveUrl} target="_blank" rel="noreferrer" className="w-11 h-11 flex items-center justify-center rounded-2xl bg-cyan-500 text-white hover:bg-cyan-400 transition-all hover:scale-110 shadow-xl shadow-cyan-500/20">
+               <FiExternalLink size={20} />
+             </a>
+          </motion.div>
+
+          <motion.div 
+            animate={{ opacity: isFront ? 1 : 0 }}
+            className="absolute bottom-6 left-6"
+          >
+            <span
+              className="text-[10px] font-mono tracking-[0.2em] uppercase px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/10 text-white"
+              style={{ borderLeft: `4px solid ${project.accent}` }}
+            >
+              {project.tag}
+            </span>
+          </motion.div>
+        </div>
+
+        {/* Right: Content Section - Only on Front */}
+        <motion.div 
+          animate={{ opacity: isFront ? 1 : 0, x: isFront ? 0 : 20 }}
+          transition={{ duration: 0.4 }}
+          className="flex-1 flex flex-col justify-between py-2"
+        >
+          <div>
+            <h3 
+              className="text-4xl md:text-5xl font-display font-800 tracking-tight italic mb-6 leading-tight"
+              style={{ color: project.accent }}
+            >
+              {project.title}
+            </h3>
+            <p className="text-[var(--text-secondary)] text-base md:text-lg leading-relaxed mb-8 italic opacity-80">
+              {project.description}
+            </p>
+          </div>
+
+          <div>
+             <div className="w-full h-[1px] bg-white/5 mb-6" />
+             <div className="flex flex-wrap gap-2 md:gap-3">
+                {project.tech.map((t) => (
+                  <TechIcon key={t} name={t} />
+                ))}
+             </div>
+          </div>
+        </motion.div>
+      </div>
+    </motion.div>
+  )
+}
 
 export default function Projects() {
   const [index, setIndex] = useState(0)
@@ -43,154 +192,90 @@ export default function Projects() {
   const handleBack = () => setIndex((prev) => (prev - 1 + projects.length) % projects.length)
 
   return (
-    <section id="projects" className="py-20 md:py-32 px-6 bg-[var(--bg)] relative overflow-hidden">
-      <div className="max-w-6xl 3xl:max-w-7xl mx-auto flex flex-col items-center">
-        
-        {/* Section Header */}
-        <div className="w-full mb-16 md:mb-24 text-center">
-          <span className="inline-block px-4 py-1.5 mb-6 text-[10px] md:text-xs font-mono tracking-widest uppercase rounded-full bg-indigo-500/10 text-indigo-400 border border-indigo-500/20">
-            Portfolio Showcase
-          </span>
-          <h2 className="text-4xl md:text-6xl 3xl:text-7xl font-display font-800 tracking-tight text-[var(--text-primary)] italic">
+    <section id="projects" className="py-24 md:py-40 px-6 bg-[var(--bg)] relative overflow-hidden flex flex-col items-center">
+      
+      {/* Background Ambience */}
+      <div className="absolute inset-0 pointer-events-none opacity-20">
+         <div className="absolute top-[20%] right-[-10%] w-[500px] h-[500px] bg-indigo-500 rounded-full blur-[150px]" />
+         <div className="absolute bottom-[20%] left-[-10%] w-[500px] h-[500px] bg-cyan-500 rounded-full blur-[150px]" />
+      </div>
+
+      <div className="max-w-7xl w-full relative z-10 flex flex-col items-center">
+        {/* Header */}
+        <div className="text-center mb-20">
+          <motion.span 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            className="inline-block px-5 py-2 mb-6 text-[10px] md:text-xs font-mono tracking-[0.3em] uppercase rounded-full bg-indigo-500/10 text-indigo-400 border border-indigo-500/20"
+          >
+            Digital Craftsmanship
+          </motion.span>
+          <motion.h2 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.1 }}
+            className="text-5xl md:text-8xl font-display font-800 tracking-tighter text-[var(--text-primary)] italic"
+          >
             Selected <span className="text-gradient">Projects</span>
-          </h2>
+          </motion.h2>
         </div>
 
-        {/* Rummy Card Stack Container */}
-        <div className="relative w-full max-w-[800px] h-[550px] md:h-[450px] flex items-center justify-center pt-8">
+        {/* 3D Stack Container */}
+        <div 
+          className="relative w-full h-[650px] md:h-[550px] flex items-center justify-center perspective-[1500px]"
+          style={{ transformStyle: 'preserve-3d' }}
+        >
           <AnimatePresence mode="popLayout">
             {projects.map((project, i) => {
-              // Logic for Rummy Card Stacking (Deck Style)
               const position = (i - index + projects.length) % projects.length
-              const isFront = position === 0
-              const isBack = position === projects.length - 1
-              const zIndex = projects.length - position
-
+              if (position > 2) return null // Only show top 3 cards for depth
+              
               return (
-                <motion.div
+                <ProjectCard 
                   key={project.title}
-                  initial={{ opacity: 0, scale: 0.8, x: 100 }}
-                  animate={{
-                    opacity: 1 - position * 0.2, // Fade background cards
-                    scale: 1 - position * 0.05, // Scale down background cards
-                    x: position * 20, // Horizontal offset
-                    y: position * -10, // Vertical "fan" offset
-                    rotate: position * 2, // Slight rummy-style rotation
-                    zIndex,
-                  }}
-                  exit={{ 
-                    opacity: 0, 
-                    scale: 0.8, 
-                    x: 400, 
-                    rotate: 15, 
-                    transition: { duration: 0.4 } 
-                  }} // Swipe out to the right
-                  transition={{ type: 'spring', damping: 25, stiffness: 120 }}
-                  className="absolute inset-0 cursor-pointer"
-                  onClick={isFront ? handleNext : undefined}
-                >
-                  <article className="h-full w-full glass rounded-[2.5rem] overflow-hidden border border-white/5 shadow-2xl relative p-8 md:p-12 flex flex-col justify-between group transition-all duration-500 hover:border-white/20">
-                    <div className="relative z-10">
-                      <div className="flex items-start justify-between mb-8">
-                        <div className="flex-1">
-                          <span
-                            className="inline-block text-[10px] font-mono tracking-[0.2em] uppercase mb-4 px-4 py-1.5 rounded-full bg-white/5"
-                            style={{ color: project.accent, border: `1px solid ${project.accent}20` }}
-                          >
-                            {project.tag}
-                          </span>
-                          <h3 
-                            className="text-3xl md:text-4xl 3xl:text-5xl font-display font-800 tracking-tight italic"
-                            style={{ color: project.accent }}
-                          >
-                            {project.title}
-                          </h3>
-                        </div>
-                        
-                        {isFront && (
-                          <div className="flex gap-3">
-                            <a
-                              href={project.githubUrl}
-                              className="w-12 h-12 flex items-center justify-center rounded-2xl glass border border-white/5 text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-all hover:scale-110"
-                            >
-                              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" />
-                              </svg>
-                            </a>
-                            <a
-                              href={project.liveUrl}
-                              className="w-12 h-12 flex items-center justify-center rounded-2xl bg-cyan-500 text-white transition-all hover:scale-110 shadow-[0_10px_20px_rgba(6,182,212,0.3)]"
-                            >
-                              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                                <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3" />
-                              </svg>
-                            </a>
-                          </div>
-                        )}
-                      </div>
-
-                      <p className="text-[var(--text-secondary)] text-base md:text-lg leading-relaxed mb-8 italic">
-                        {project.description}
-                      </p>
-                    </div>
-
-                    <div className="flex flex-wrap gap-2 md:gap-3">
-                      {project.tech.map((t) => (
-                        <span
-                          key={t}
-                          className="text-[9px] md:text-[10px] font-mono font-bold px-3 py-1.5 md:px-4 md:py-2 rounded-xl bg-white/5 text-[var(--text-primary)] border border-white/5 uppercase tracking-widest"
-                        >
-                          {t}
-                        </span>
-                      ))}
-                    </div>
-
-                    {/* Gradient Hint for shuffle */}
-                    {isFront && (
-                      <div className="absolute bottom-6 right-8 flex items-center gap-2 opacity-40 group-hover:opacity-100 transition-opacity">
-                         <span className="text-[10px] font-mono uppercase tracking-[0.2em]">Next Project</span>
-                         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" className="animate-bounce-x">
-                           <path d="M9 18l6-6-6-6" />
-                         </svg>
-                      </div>
-                    )}
-                  </article>
-                </motion.div>
+                  project={project}
+                  isFront={position === 0}
+                  position={position}
+                  onNext={handleNext}
+                />
               )
             })}
           </AnimatePresence>
         </div>
 
-        {/* Stack Navigation Controls */}
-        <div className="mt-12 flex items-center gap-6">
+        {/* Controls */}
+        <div className="mt-16 flex items-center gap-12">
           <button
             onClick={handleBack}
-            className="p-4 rounded-full glass border border-white/5 text-[var(--text-secondary)] hover:text-cyan-500 transition-all hover:scale-110"
+            className="group relative p-6 rounded-full glass border border-white/10 text-white/50 hover:text-cyan-400 transition-all"
             aria-label="Previous Project"
           >
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-              <path d="M15 18l-6-6 6-6" />
-            </svg>
+            <div className="absolute inset-0 bg-cyan-500/0 group-hover:bg-cyan-500/10 rounded-full transition-all duration-300" />
+            <FiChevronLeft size={28} />
           </button>
-          <div className="flex gap-2">
+
+          <div className="flex gap-4">
              {projects.map((_, i) => (
                <div 
                  key={i}
-                 className={`w-2 h-2 rounded-full transition-all duration-300 ${i === index ? 'w-8 bg-cyan-500' : 'bg-white/10'}`}
+                 className={`h-1.5 rounded-full transition-all duration-500 ${i === index ? 'w-12 bg-gradient-to-r from-indigo-500 to-cyan-500' : 'w-1.5 bg-white/10'}`}
                />
              ))}
           </div>
+
           <button
             onClick={handleNext}
-            className="p-4 rounded-full bg-cyan-500/10 border border-cyan-500/30 text-cyan-500 hover:bg-cyan-500/20 transition-all hover:scale-110"
+            className="group relative p-6 rounded-full bg-indigo-500/10 border border-indigo-500/30 text-indigo-400 hover:text-white transition-all overflow-hidden"
             aria-label="Next Project"
           >
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-              <path d="M9 18l6-6-6-6" />
-            </svg>
+            <div className="absolute inset-0 bg-gradient-to-r from-indigo-500 to-cyan-500 opacity-0 group-hover:opacity-100 transition-all duration-300" />
+            <FiChevronRight size={28} className="relative z-10" />
           </button>
         </div>
 
+        <p className="mt-12 text-[10px] font-mono text-[var(--text-secondary)] uppercase tracking-[0.5em] opacity-40 animate-pulse">
+          Drag cards to explore or use arrows
+        </p>
       </div>
     </section>
   )
