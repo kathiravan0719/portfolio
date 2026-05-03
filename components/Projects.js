@@ -32,6 +32,17 @@ const techIcons = {
 
 const projects = [
   {
+    tag: 'Final Year Project',
+    title: 'AI College CMS',
+    description:
+      'An AI-Driven College Interaction and Content Management System. A smart platform for campus communication featuring real-time chat, student forums, and AI-powered content monitoring.',
+    image: '/projects/aicollegecms.png',
+    tech: ['React', 'Node.js', 'Express', 'MongoDB', 'Tailwind CSS', 'Vercel'],
+    liveUrl: 'https://ai-driven-framework-for-intelligent.vercel.app/',
+    githubUrl: 'https://github.com/kathiravan0719',
+    accent: '#F59E0B',
+  },
+  {
     tag: 'Featured Project',
     title: 'StudyAI — Smart Planner',
     description:
