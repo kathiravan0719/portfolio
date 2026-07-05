@@ -9,8 +9,26 @@ export default function Footer() {
           <p className="text-sm text-[var(--text-secondary)] font-mono tracking-widest uppercase opacity-60">
             © 2024 Kathiravan.D
           </p>
-          <p className="text-xs text-[var(--text-secondary)] opacity-40 italic">
-            Built with Next.js, Framer Motion & Tailwind
+          <p className="text-xs text-[var(--text-secondary)] opacity-40 italic flex flex-wrap gap-2 items-center">
+            <span>Built with Next.js, Framer Motion & Tailwind</span>
+            <span className="hidden sm:inline">•</span>
+            <a 
+              href="https://github.com/kathiravan0719" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="hover:text-cyan-500 transition-colors underline decoration-white/20 hover:decoration-cyan-500"
+            >
+              GitHub
+            </a>
+            <span>•</span>
+            <a 
+              href="https://portfolio-five-sooty-mo1ccx609g.vercel.app" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="hover:text-cyan-500 transition-colors underline decoration-white/20 hover:decoration-cyan-500"
+            >
+              Live Site
+            </a>
           </p>
         </div>
         
