@@ -122,7 +122,7 @@ export default function Hero() {
                 </svg>
               </a>
               <a
-                href="/resume.pdf"
+                href="/resume.pdf?v=2"
                 className="px-8 py-4 glass border border-white/5 hover:border-white/20 text-[var(--text-primary)] font-bold text-sm rounded-2xl transition-all hover:-translate-y-1"
               >
                 Resume
@@ -233,7 +233,7 @@ export default function Hero() {
                 style={{ zIndex: 2 }}
               >
                 <Image
-                  src="/profile.jpg"
+                  src="/profile.jpg?v=2"
                   alt="Kathiravan.D — Full Stack Developer"
                   fill
                   className={`object-cover object-top scale-110 transition-all duration-700 ${hudActive ? 'saturate-[1.2] brightness-[1.1]' : 'saturate-[0.9]'}`}
@@ -390,7 +390,7 @@ export default function Hero() {
                   className="w-full h-full relative"
                 >
                   <Image
-                    src="/profile.jpg"
+                    src="/profile.jpg?v=2"
                     alt="Kathiravan D"
                     fill
                     className={`object-cover object-top scale-110 transition-all duration-700 ${hudActive ? 'saturate-[1.2] brightness-[1.1]' : 'saturate-[0.9]'}`}
