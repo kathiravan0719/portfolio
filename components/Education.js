@@ -75,13 +75,13 @@ export default function Education() {
                 className="group relative md:pl-20"
               >
                 {/* Timeline Node (Icon) */}
-                <div className="hidden md:flex absolute left-[2px] top-4 w-12 h-12 rounded-2xl glass items-center justify-center text-emerald-400 z-20 group-hover:scale-110 group-hover:border-white/20 transition-all duration-300">
+                <div className="hidden md:flex absolute left-[2px] top-4 w-12 h-12 rounded-2xl glass-card items-center justify-center text-emerald-400 z-20 group-hover:scale-110 group-hover:border-emerald-400/40 transition-all duration-300 shadow-lg">
                     <GraduationCap size={20} />
                 </div>
 
-                <div className="glass p-6 md:p-10 rounded-[2.5rem] border border-white/5 hover:border-white/10 transition-all duration-500 relative z-10 overflow-hidden">
+                <div className="glass-card p-6 md:p-10 rounded-[2.5rem] relative z-10 overflow-hidden group-hover:border-emerald-400/30 transition-all duration-500">
                    {/* Background Shimmer Layer */}
-                   <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/[0.02] to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+                   <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/[0.04] to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
                    
                    <div className="relative z-10">
                     <div className="flex flex-wrap items-start justify-between gap-4 mb-4">
@@ -93,13 +93,13 @@ export default function Education() {
                           {edu.institution}
                         </p>
                       </div>
-                      <div className="flex flex-col items-end gap-1 font-mono text-[10px] md:text-xs opacity-60">
-                        <span className="flex items-center gap-2 bg-white/5 px-2 py-1 rounded-md tracking-tighter"><Calendar size={12} /> {edu.period}</span>
-                        <span className="flex items-center gap-2"><MapPin size={12} /> {edu.location}</span>
+                      <div className="flex flex-col items-end gap-1.5 font-mono text-[10px] md:text-xs text-[var(--text-secondary)]">
+                        <span className="flex items-center gap-2 glass px-3 py-1 rounded-full border border-white/10 tracking-tight"><Calendar size={12} className="text-emerald-400" /> {edu.period}</span>
+                        <span className="flex items-center gap-2 opacity-80"><MapPin size={12} /> {edu.location}</span>
                       </div>
                     </div>
                     {edu.details && (
-                       <p className="inline-block px-4 py-1 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/10 text-[10px] font-mono tracking-[0.2em] uppercase mt-4">
+                       <p className="inline-block px-4 py-1.5 rounded-full glass border border-emerald-400/20 text-emerald-400 text-[10px] font-mono tracking-[0.2em] uppercase mt-4">
                           {edu.details}
                        </p>
                     )}

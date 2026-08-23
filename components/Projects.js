@@ -81,9 +81,9 @@ const TechIcon = ({ name }) => {
   const tech = techIcons[name] || { icon: SiJavascript, color: '#F7DF1E' }
   const Icon = tech.icon
   return (
-    <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 transition-colors hover:bg-white/10 group">
+    <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl glass border border-white/10 transition-all hover:border-cyan-400/40 hover:bg-white/10 group">
       <Icon style={{ color: tech.color }} className="text-sm transition-transform group-hover:scale-110" />
-      <span className="text-[10px] font-medium text-[var(--text-secondary)] whitespace-nowrap">{name}</span>
+      <span className="text-[11px] font-medium text-[var(--text-secondary)] whitespace-nowrap group-hover:text-[var(--text-primary)] transition-colors">{name}</span>
     </div>
   )
 }
@@ -126,10 +126,10 @@ const ProjectCard = ({ project, isFront, position, onNext }) => {
       onDragEnd={handleDragEnd}
       className="absolute w-full max-w-[850px] aspect-[16/10] md:aspect-[16/9] cursor-grab active:cursor-grabbing"
     >
-      <div className="w-full h-full glass rounded-[3rem] overflow-hidden border border-white/10 shadow-3xl flex flex-col md:flex-row p-6 md:p-8 gap-8 group transition-all duration-500 hover:border-white/20 backdrop-blur-3xl bg-white/[0.03]">
+      <div className="w-full h-full glass-card rounded-[3rem] overflow-hidden shadow-2xl flex flex-col md:flex-row p-6 md:p-8 gap-8 group transition-all duration-500 hover:border-cyan-400/30">
         
         {/* Left: Project Preview */}
-        <div className="relative w-full md:w-[45%] h-full rounded-[2rem] overflow-hidden flex-shrink-0 bg-black/40 border border-white/5">
+        <div className="relative w-full md:w-[45%] h-full rounded-[2rem] overflow-hidden flex-shrink-0 bg-black/40 border border-white/10">
           <img 
             src={project.image} 
             alt={project.title}
@@ -143,10 +143,10 @@ const ProjectCard = ({ project, isFront, position, onNext }) => {
             animate={{ opacity: isFront ? 1 : 0, y: isFront ? 0 : 20 }}
             className="absolute top-6 right-6 flex gap-3"
           >
-             <a href={project.githubUrl} target="_blank" rel="noreferrer" className="w-11 h-11 flex items-center justify-center rounded-2xl glass border border-white/10 text-white hover:bg-indigo-500 transition-all hover:scale-110 shadow-xl">
+             <a href={project.githubUrl} target="_blank" rel="noreferrer" className="w-11 h-11 flex items-center justify-center rounded-2xl glass border border-white/15 text-white hover:bg-indigo-500 transition-all hover:scale-110 shadow-xl" aria-label="GitHub Repository">
                <FiGithub size={20} />
              </a>
-             <a href={project.liveUrl} target="_blank" rel="noreferrer" className="w-11 h-11 flex items-center justify-center rounded-2xl bg-cyan-500 text-white hover:bg-cyan-400 transition-all hover:scale-110 shadow-xl shadow-cyan-500/20">
+             <a href={project.liveUrl} target="_blank" rel="noreferrer" className="w-11 h-11 flex items-center justify-center rounded-2xl bg-cyan-500 text-white hover:bg-cyan-400 transition-all hover:scale-110 shadow-xl shadow-cyan-500/25" aria-label="Live Demo">
                <FiExternalLink size={20} />
              </a>
           </motion.div>
@@ -156,7 +156,7 @@ const ProjectCard = ({ project, isFront, position, onNext }) => {
             className="absolute bottom-6 left-6"
           >
             <span
-              className="text-[10px] font-mono tracking-[0.2em] uppercase px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/10 text-white"
+              className="text-[10px] font-mono tracking-[0.2em] uppercase px-4 py-1.5 rounded-full glass border border-white/15 text-white"
               style={{ borderLeft: `4px solid ${project.accent}` }}
             >
               {project.tag}
@@ -219,7 +219,7 @@ export default function Projects() {
             whileInView={{ opacity: 1, y: 0 }}
             className="inline-block px-5 py-2 mb-6 text-[10px] md:text-xs font-mono tracking-[0.3em] uppercase rounded-full bg-indigo-500/10 text-indigo-400 border border-indigo-500/20"
           >
-            Digital Craftsmanship
+            Selected Work
           </motion.span>
           <motion.h2 
             initial={{ opacity: 0, y: 20 }}
@@ -227,7 +227,7 @@ export default function Projects() {
             transition={{ delay: 0.1 }}
             className="text-5xl md:text-8xl font-display font-800 tracking-tighter text-[var(--text-primary)] italic"
           >
-            Selected <span className="text-gradient">Projects</span>
+            Projects I've <span className="text-gradient">Built</span>
           </motion.h2>
         </div>
 

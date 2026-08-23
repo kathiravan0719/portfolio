@@ -4,7 +4,7 @@ import { useInView } from 'framer-motion'
 import { useRef } from 'react'
 
 const stats = [
-  { number: '3+', label: 'Projects Built' },
+  { number: '3', label: 'Featured Projects' },
   { number: 'MERN', label: 'Core Stack' },
   { number: 'AI', label: 'Integrated' },
 ]
@@ -25,7 +25,7 @@ export default function About() {
           {/* Left: Text */}
           <div>
             <span className="inline-block px-4 py-1.5 mb-6 text-xs font-mono tracking-widest uppercase rounded-full bg-cyan-500/10 text-cyan-500 border border-cyan-500/20">
-              Identity
+              About Me
             </span>
             <h2 className="text-4xl md:text-6xl font-display font-800 tracking-tight text-[var(--text-primary)] mb-8">
               Crafting Digital <br />
@@ -33,7 +33,10 @@ export default function About() {
             </h2>
             <div className="space-y-6 text-[var(--text-secondary)] text-lg leading-relaxed font-medium">
               <p>
-                I am a <span className="text-[var(--text-primary)]">Full Stack Developer</span> with
+                I help <span className="text-[var(--text-primary)]">businesses, startups and individuals</span> turn their ideas into fast, modern and responsive web experiences.
+              </p>
+              <p>
+                I am a <span className="text-[var(--text-primary)]">Full Stack Developer & Freelance Web Developer</span> with
                 a focus on building scalable web solutions using the MERN stack.
               </p>
               <p>
@@ -41,17 +44,32 @@ export default function About() {
                 intuitive user interfaces. I believe in code that is as beautiful as the pixels it renders.
               </p>
               <p>
-                Currently exploring the frontiers of <span className="text-cyan-500">AI integration</span> and 
+                Currently exploring the frontiers of <span className="text-cyan-500">AI integration</span> and
                 real-time collaborative systems to push what's possible on the web.
               </p>
             </div>
 
-            <div className="mt-12 flex gap-4">
+            {/* Location */}
+            <div className="mt-6 flex items-center gap-2 text-[var(--text-secondary)] text-xs font-mono opacity-50">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+                <circle cx="12" cy="10" r="3" />
+              </svg>
+              Based in Chennai, India • Available for remote projects worldwide
+            </div>
+
+            <div className="mt-12 flex gap-4 flex-wrap">
               <a
                 href="#projects"
-                className="px-8 py-3 bg-white/5 border border-white/5 hover:border-white/20 text-[var(--text-primary)] font-bold text-sm rounded-2xl transition-all hover:bg-white/10"
+                className="px-8 py-3.5 glass border border-white/10 hover:border-white/20 text-[var(--text-primary)] font-bold text-sm rounded-2xl transition-all hover:bg-white/10 hover:-translate-y-0.5"
               >
                 View Projects
+              </a>
+              <a
+                href="#contact"
+                className="px-8 py-3.5 glass border border-cyan-500/40 text-cyan-400 font-bold text-sm rounded-2xl transition-all hover:bg-cyan-500/20 hover:border-cyan-500/70 hover:shadow-[0_0_25px_rgba(6,182,212,0.25)] hover:-translate-y-0.5"
+              >
+                Start a Project
               </a>
             </div>
           </div>
@@ -65,10 +83,10 @@ export default function About() {
                   initial={{ opacity: 0, scale: 0.8 }}
                   animate={inView ? { opacity: 1, scale: 1 } : {}}
                   transition={{ delay: 0.2 + i * 0.1, duration: 0.5 }}
-                  className="glass p-4 md:p-6 rounded-3xl text-center"
+                  className="glass-card p-5 md:p-6 rounded-3xl text-center hover:border-cyan-400/30"
                 >
                   <p className="text-2xl md:text-3xl font-display font-800 text-gradient mb-1 italic">{stat.number}</p>
-                  <p className="text-[var(--text-secondary)] text-[8px] md:text-[10px] font-mono tracking-widest uppercase opacity-60 italic">{stat.label}</p>
+                  <p className="text-[var(--text-secondary)] text-[9px] md:text-[10px] font-mono tracking-widest uppercase opacity-70 italic">{stat.label}</p>
                 </motion.div>
               ))}
             </div>
@@ -77,20 +95,21 @@ export default function About() {
               initial={{ opacity: 0, x: 20 }}
               animate={inView ? { opacity: 1, x: 0 } : {}}
               transition={{ delay: 0.5, duration: 0.7 }}
-              className="glass p-5 xs:p-8 rounded-3xl font-mono text-[10px] xs:text-xs md:text-sm shadow-2xl relative overflow-hidden"
+              className="glass-card p-5 xs:p-8 rounded-3xl font-mono text-[10px] xs:text-xs md:text-sm shadow-2xl relative overflow-hidden"
             >
-              <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-cyan-500 via-indigo-500 to-violet-500 opacity-50" />
+              <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-cyan-500 via-indigo-500 to-violet-500 opacity-60" />
               <div className="flex items-center gap-2 mb-4 md:mb-6">
-                <div className="w-3 h-3 rounded-full bg-red-500/40" />
-                <div className="w-3 h-3 rounded-full bg-yellow-500/40" />
-                <div className="w-3 h-3 rounded-full bg-green-500/40" />
-                <span className="ml-2 text-[var(--text-secondary)] text-[10px] tracking-widest uppercase opacity-40">profile.config</span>
+                <div className="w-3 h-3 rounded-full bg-red-500/60" />
+                <div className="w-3 h-3 rounded-full bg-yellow-500/60" />
+                <div className="w-3 h-3 rounded-full bg-green-500/60" />
+                <span className="ml-2 text-[var(--text-secondary)] text-[10px] tracking-widest uppercase opacity-50 font-semibold">profile.config</span>
               </div>
-              <div className="space-y-2 opacity-90">
-                <p><span className="text-indigo-400">const</span> <span className="text-cyan-400">developer</span> <span className="text-[var(--text-primary)]">= {'{'}</span></p>
+              <div className="space-y-2 opacity-95">
+                <p><span className="text-indigo-400">const</span> <span className="text-cyan-400 font-semibold">developer</span> <span className="text-[var(--text-primary)]">= {'{'}</span></p>
                 <p className="pl-4"><span className="text-[var(--text-secondary)]">name:</span> <span className="text-emerald-400">'Kathiravan'</span><span className="text-[var(--text-primary)]">,</span></p>
                 <p className="pl-4"><span className="text-[var(--text-secondary)]">stack:</span> <span className="text-[var(--text-primary)]">[</span><span className="text-emerald-400">'MERN'</span><span className="text-[var(--text-primary)]">, </span><span className="text-emerald-400">'AI'</span><span className="text-[var(--text-primary)]">],</span></p>
-                <p className="pl-4"><span className="text-[var(--text-secondary)]">focus:</span> <span className="text-emerald-400">'Scalability'</span></p>
+                <p className="pl-4"><span className="text-[var(--text-secondary)]">focus:</span> <span className="text-emerald-400">'High-Impact Client Results'</span><span className="text-[var(--text-primary)]">,</span></p>
+                <p className="pl-4"><span className="text-[var(--text-secondary)]">location:</span> <span className="text-emerald-400">'Chennai, India'</span></p>
                 <p><span className="text-[var(--text-primary)]">{'}'}</span></p>
               </div>
             </motion.div>

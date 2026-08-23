@@ -8,7 +8,7 @@ const experienceData = [
   {
     company: 'Rebel iTech Solutions',
     role: 'Frontend Developer Intern',
-    period: '12/2025 – Present',
+    period: '12/2025 – 03/2026',
     location: 'Chennai, India',
     bullets: [
       'Developed and maintained responsive web interfaces using HTML, CSS, and JavaScript.',
@@ -86,13 +86,13 @@ export default function Experience() {
                 className="group relative md:pl-20"
               >
                 {/* Timeline Node (Icon) */}
-                <div className="hidden md:flex absolute left-[2px] top-4 w-12 h-12 rounded-2xl glass items-center justify-center text-cyan-400 z-20 group-hover:scale-110 group-hover:border-white/20 transition-all duration-300">
+                <div className="hidden md:flex absolute left-[2px] top-4 w-12 h-12 rounded-2xl glass-card items-center justify-center text-cyan-400 z-20 group-hover:scale-110 group-hover:border-cyan-400/40 transition-all duration-300 shadow-lg">
                     <Briefcase size={20} />
                 </div>
 
-                <div className="glass p-6 md:p-10 rounded-[2.5rem] border border-white/5 hover:border-white/10 transition-all duration-500 relative z-10 overflow-hidden">
+                <div className="glass-card p-6 md:p-10 rounded-[2.5rem] relative z-10 overflow-hidden group-hover:border-cyan-400/30 transition-all duration-500">
                    {/* Background Shimmer Layer */}
-                   <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/[0.02] to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+                   <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/[0.04] to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
                    
                    <div className="relative z-10">
                     <div className="flex flex-wrap items-start justify-between gap-4 mb-8">
@@ -100,19 +100,19 @@ export default function Experience() {
                         <h4 className="text-2xl md:text-3xl font-display font-800 text-[var(--text-primary)] transition-colors group-hover:text-cyan-400">
                           {exp.company}
                         </h4>
-                        <p className="text-base font-mono text-cyan-500/80 uppercase tracking-widest mt-2 italic">
+                        <p className="text-base font-mono text-cyan-400 uppercase tracking-widest mt-2 italic font-semibold">
                           {exp.role}
                         </p>
                       </div>
-                      <div className="flex flex-col items-end gap-1 font-mono text-[10px] md:text-xs opacity-60">
-                        <span className="flex items-center gap-2 bg-white/5 px-2 py-1 rounded-md tracking-tighter"><Calendar size={12} /> {exp.period}</span>
-                        <span className="flex items-center gap-2"><MapPin size={12} /> {exp.location}</span>
+                      <div className="flex flex-col items-end gap-1.5 font-mono text-[10px] md:text-xs text-[var(--text-secondary)]">
+                        <span className="flex items-center gap-2 glass px-3 py-1 rounded-full border border-white/10 tracking-tight"><Calendar size={12} className="text-cyan-400" /> {exp.period}</span>
+                        <span className="flex items-center gap-2 opacity-80"><MapPin size={12} /> {exp.location}</span>
                       </div>
                     </div>
                     <ul className="space-y-4">
                       {exp.bullets.map((bullet, bi) => (
                         <li key={bi} className="flex gap-4 text-[var(--text-secondary)] text-sm md:text-base leading-relaxed italic">
-                          <span className="w-1.5 h-1.5 rounded-full bg-cyan-500 mt-2 shrink-0 group-hover:scale-125 transition-transform" />
+                          <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 mt-2 shrink-0 group-hover:scale-125 transition-transform shadow-[0_0_8px_#22d3ee]" />
                           {bullet}
                         </li>
                       ))}

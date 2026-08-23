@@ -17,23 +17,36 @@ module.exports = {
         '3xl': '1920px',
       },
       colors: {
-        bg: '#080C14',
-        surface: '#0D1117',
-        card: '#111827',
-        border: '#1E2D3D',
+        bg: '#000000',
+        surface: '#0a0a0a',
+        card: 'rgba(255, 255, 255, 0.04)',
+        border: 'rgba(255, 255, 255, 0.08)',
         cyan: {
           400: '#22D3EE',
           500: '#06B6D4',
           glow: '#00D4FF',
         },
+        indigo: {
+          400: '#818CF8',
+          500: '#6366F1',
+          600: '#4F46E5',
+        },
+        emerald: {
+          400: '#34D399',
+          500: '#10B981',
+        },
+        amber: {
+          400: '#FBBF24',
+          500: '#F59E0B',
+        },
         text: {
-          primary: '#F0F6FC',
-          secondary: '#8B9DC3',
-          muted: '#4A5568',
+          primary: '#FFFFFF',
+          secondary: '#A1A1AA',
+          muted: '#52525B',
         },
       },
       backgroundImage: {
-        'grid-pattern': `linear-gradient(rgba(30,45,61,0.4) 1px, transparent 1px), linear-gradient(90deg, rgba(30,45,61,0.4) 1px, transparent 1px)`,
+        'grid-pattern': `linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px)`,
       },
       backgroundSize: {
         'grid': '60px 60px',
