@@ -1,9 +1,11 @@
 'use client'
 import Navbar from '../components/Navbar'
 import Hero from '../components/Hero'
+import FreeInitiative from '../components/FreeInitiative'
 import Services from '../components/Services'
 import Projects from '../components/Projects'
 import HowItWorks from '../components/HowItWorks'
+import WhyWorkWithMe from '../components/WhyWorkWithMe'
 import About from '../components/About'
 import Experience from '../components/Experience'
 import Skills from '../components/Skills'
@@ -21,9 +23,11 @@ export default function Home() {
       <main className="noise-overlay">
         <Navbar />
         <Hero />
+        <FreeInitiative />
         <Services />
         <Projects />
         <HowItWorks />
+        <WhyWorkWithMe />
         <About />
         <Experience />
         <Skills />
@@ -36,3 +40,4 @@ export default function Home() {
     </>
   )
 }
+

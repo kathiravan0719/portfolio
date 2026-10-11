@@ -61,7 +61,7 @@ export default function Hero() {
             {/* Availability badge */}
             <motion.div variants={item} className="inline-flex items-center gap-2.5 mb-8 mx-auto lg:mx-0 w-fit px-4 py-2 rounded-full bg-white/[0.04] border border-emerald-500/30 backdrop-blur-xl">
               <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse shadow-[0_0_8px_#34d399]" />
-              <span className="text-xs font-mono font-bold text-emerald-400 tracking-widest uppercase">Available for Projects</span>
+              <span className="text-xs font-mono font-bold text-emerald-400 tracking-widest uppercase">Available for Selected Projects</span>
             </motion.div>
 
             {/* Headline */}
@@ -80,9 +80,18 @@ export default function Hero() {
             {/* Description */}
             <motion.p
               variants={item}
-              className="text-zinc-400 text-base sm:text-lg max-w-xl mx-auto lg:mx-0 leading-relaxed mb-10"
+              className="text-zinc-400 text-base sm:text-lg max-w-xl mx-auto lg:mx-0 leading-relaxed mb-3"
             >
-              I build <strong className="text-white font-semibold">fast, responsive, high-converting</strong> websites and web apps that attract customers and grow your business.
+              I build <strong className="text-white font-semibold">fast, responsive, modern</strong> websites and web applications for businesses, startups and professionals.
+            </motion.p>
+
+            {/* Free initiative subtitle */}
+            <motion.p
+              variants={item}
+              className="text-zinc-500 text-sm max-w-md mx-auto lg:mx-0 leading-relaxed mb-8 font-mono"
+            >
+              Currently accepting a limited number of businesses for my{' '}
+              <a href="#free-initiative" className="text-cyan-400 underline decoration-cyan-400/40 hover:decoration-cyan-400 transition-all font-semibold">free website initiative.</a>
             </motion.p>
 
             {/* CTA Buttons */}

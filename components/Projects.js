@@ -35,7 +35,7 @@ const projects = [
     tag: 'Final Year Project',
     title: 'AI College CMS',
     description:
-      'An AI-Driven College Interaction and Content Management System. A smart platform for campus communication featuring real-time chat, student forums, and AI-powered content monitoring.',
+      'Problem: Managing college communication and content across different channels was fragmented and slow. Solution: Built a centralized full-stack platform with real-time messaging, student forums and AI-powered content management — bringing everything into one place.',
     image: '/projects/aicollegecms.png',
     tech: ['React', 'Node.js', 'Express', 'MongoDB', 'Tailwind CSS', 'Vercel'],
     liveUrl: 'https://ai-driven-framework-for-intelligent.vercel.app/',
@@ -46,7 +46,7 @@ const projects = [
     tag: 'Featured Project',
     title: 'StudyAI — Smart Planner',
     description:
-      'An intelligent study planner powered by AI that helps students organize their academic life. Features smart scheduling, streak tracking, and a built-in analytics dashboard.',
+      'Problem: Students struggle to organize their study time effectively. Solution: Built an AI-powered study planner that creates smart schedules, tracks progress with streaks, and provides an analytics dashboard — helping students stay focused and on track.',
     image: '/projects/studyai.png',
     tech: ['Python', 'Flask', 'MongoDB', 'React', 'Tailwind CSS', 'Render'],
     liveUrl: 'https://ai-study-planner-8y16.onrender.com',
@@ -57,7 +57,7 @@ const projects = [
     tag: 'Internship Project',
     title: 'E-Bus Tracking System',
     description:
-      'A digital bus ticketing and real-time location management system. Developed to streamline public transport tracking and booking experiences with Firebase integration.',
+      'Problem: Public bus ticketing and route tracking was manual and inefficient. Solution: Developed a digital platform for real-time bus location tracking and online ticket management — making public transport easier for both operators and passengers.',
     image: '/projects/ebus.png',
     tech: ['HTML', 'CSS', 'JavaScript', 'Firebase'],
     liveUrl: 'https://loginform-93e3d.web.app/',
@@ -68,7 +68,7 @@ const projects = [
     tag: 'Full Stack / MERN',
     title: 'ShopMERN — E-Commerce',
     description:
-      'A professional full-stack platform featuring JWT auth, role-based admin dashboard, real-time cart, multi-step checkout, and a RESTful API with 15+ endpoints.',
+      'Problem: Businesses need a reliable online store with secure payments, product management and an admin backend. Solution: Built a complete e-commerce platform with user authentication, a role-based admin dashboard, cart system and a 15+ endpoint REST API — production-ready from day one.',
     image: '/projects/shopmern.png',
     tech: ['React', 'Node.js', 'Express', 'MongoDB', 'JWT', 'Vercel'],
     liveUrl: 'https://shopmern-woad.vercel.app/',
