@@ -213,7 +213,7 @@ export default function Projects() {
 
       <div className="max-w-7xl w-full relative z-10 flex flex-col items-center">
         {/* Header */}
-        <div className="text-center mb-20">
+        <div className="text-center mb-12 md:mb-20">
           <motion.span 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -233,7 +233,7 @@ export default function Projects() {
 
         {/* 3D Stack Container */}
         <div 
-          className="relative w-full h-[650px] md:h-[550px] flex items-center justify-center perspective-[1500px]"
+          className="relative w-full h-[270px] xs:h-[290px] sm:h-[400px] md:h-[550px] flex items-center justify-center perspective-[1500px]"
           style={{ transformStyle: 'preserve-3d' }}
         >
           <AnimatePresence mode="popLayout">
@@ -255,36 +255,36 @@ export default function Projects() {
         </div>
 
         {/* Controls */}
-        <div className="mt-16 flex items-center gap-12">
+        <div className="mt-6 sm:mt-8 md:mt-16 flex items-center gap-6 sm:gap-8 md:gap-12">
           <button
             onClick={handleBack}
-            className="group relative p-6 rounded-full glass border border-white/10 text-white/50 hover:text-cyan-400 transition-all"
+            className="group relative p-3.5 sm:p-4 md:p-6 rounded-full glass border border-white/10 text-white/50 hover:text-cyan-400 active:scale-95 transition-all"
             aria-label="Previous Project"
           >
             <div className="absolute inset-0 bg-cyan-500/0 group-hover:bg-cyan-500/10 rounded-full transition-all duration-300" />
-            <FiChevronLeft size={28} />
+            <FiChevronLeft className="w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7" />
           </button>
 
-          <div className="flex gap-4">
+          <div className="flex gap-2.5 sm:gap-3 md:gap-4 items-center">
              {projects.map((_, i) => (
                <div 
                  key={i}
-                 className={`h-1.5 rounded-full transition-all duration-500 ${i === index ? 'w-12 bg-gradient-to-r from-indigo-500 to-cyan-500' : 'w-1.5 bg-white/10'}`}
+                 className={`h-1.5 rounded-full transition-all duration-500 ${i === index ? 'w-8 sm:w-10 md:w-12 bg-gradient-to-r from-indigo-500 to-cyan-500' : 'w-1.5 bg-white/10'}`}
                />
              ))}
           </div>
 
           <button
             onClick={handleNext}
-            className="group relative p-6 rounded-full bg-indigo-500/10 border border-indigo-500/30 text-indigo-400 hover:text-white transition-all overflow-hidden"
+            className="group relative p-3.5 sm:p-4 md:p-6 rounded-full bg-indigo-500/10 border border-indigo-500/30 text-indigo-400 hover:text-white active:scale-95 transition-all overflow-hidden"
             aria-label="Next Project"
           >
             <div className="absolute inset-0 bg-gradient-to-r from-indigo-500 to-cyan-500 opacity-0 group-hover:opacity-100 transition-all duration-300" />
-            <FiChevronRight size={28} className="relative z-10" />
+            <FiChevronRight className="w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7 relative z-10" />
           </button>
         </div>
 
-        <p className="mt-12 text-[10px] font-mono text-[var(--text-secondary)] uppercase tracking-[0.5em] opacity-40 animate-pulse">
+        <p className="mt-4 sm:mt-6 md:mt-12 text-[10px] font-mono text-[var(--text-secondary)] uppercase tracking-[0.3em] md:tracking-[0.5em] opacity-40 animate-pulse text-center">
           Drag cards to explore or use arrows
         </p>
       </div>

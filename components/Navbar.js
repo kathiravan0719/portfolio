@@ -48,7 +48,7 @@ export default function Navbar() {
         transition={{ duration: 0.6, ease: 'easeOut' }}
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
           scrolled || menuOpen
-            ? 'bg-black/90 backdrop-blur-2xl border-b border-white/[0.08] shadow-[0_10px_30px_rgba(0,0,0,0.6)]'
+            ? 'bg-[#070a13] backdrop-blur-2xl border-b border-white/[0.08] shadow-[0_10px_30px_rgba(0,0,0,0.6)]'
             : 'bg-transparent'
         }`}
       >
@@ -160,7 +160,8 @@ export default function Navbar() {
               animate={{ opacity: 1, height: 'calc(100vh - 80px)' }}
               exit={{ opacity: 0, height: 0 }}
               transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
-              className="lg:hidden fixed top-20 left-0 right-0 bottom-0 bg-black/98 backdrop-blur-3xl border-t border-white/[0.08] overflow-y-auto z-50 flex flex-col justify-between p-6"
+              style={{ backgroundColor: '#070a13' }}
+              className="lg:hidden fixed top-20 left-0 right-0 bottom-0 backdrop-blur-2xl border-t border-white/[0.08] overflow-y-auto z-50 flex flex-col justify-between p-6 shadow-2xl"
             >
               <div className="flex flex-col gap-2.5 pt-2">
                 <p className="text-[10px] font-mono text-zinc-500 uppercase tracking-[0.3em] mb-2 pl-2">Navigation</p>

@@ -90,7 +90,7 @@ export default function Hero() {
               variants={item}
               className="text-zinc-500 text-sm max-w-md mx-auto lg:mx-0 leading-relaxed mb-8 font-mono"
             >
-              Currently accepting a limited number of businesses for my{' '}
+              Currently selecting 2 businesses for my{' '}
               <a href="#free-initiative" className="text-cyan-400 underline decoration-cyan-400/40 hover:decoration-cyan-400 transition-all font-semibold">free website initiative.</a>
             </motion.p>
 

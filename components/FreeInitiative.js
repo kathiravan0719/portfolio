@@ -125,8 +125,8 @@ export default function FreeInitiative() {
           </h2>
 
           <p className="text-zinc-400 max-w-2xl mx-auto text-lg leading-relaxed font-medium mb-8">
-            I'm currently building my freelance portfolio and working with a small number of businesses and professionals.
-            Selected projects can receive a modern, responsive website{' '}
+            As I build my freelance portfolio, I am selecting only two businesses for free website development.
+            Selected projects receive a modern, responsive website{' '}
             <span className="text-white font-semibold">completely free of development charges.</span>
           </p>
 
@@ -139,7 +139,7 @@ export default function FreeInitiative() {
           >
             <span className="w-2.5 h-2.5 rounded-full bg-amber-400 animate-pulse shadow-[0_0_10px_#FBBF24]" />
             <span className="text-sm font-mono font-bold text-amber-400 tracking-widest uppercase">
-              3–5 Projects Only
+              Only 2 Projects Available
             </span>
           </motion.div>
 
